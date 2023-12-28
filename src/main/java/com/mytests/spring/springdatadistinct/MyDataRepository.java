@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface MyDataRepository extends CrudRepository<MyData, Integer> {
 
-    // 'distinct' keyword is not parsed properly inside 'listagg':
+    // 'distinct' keyword is not parsed properly inside 'listagg': https://youtrack.jetbrains.com/issue/IDEA-341776
     @Query("""
             select new com.mytests.spring.springdatadistinct.MyDataDTO(
                 data.num1,
@@ -25,7 +25,7 @@ public interface MyDataRepository extends CrudRepository<MyData, Integer> {
             """)
     Long someQuery1();
 
-    // 'distinct' keyword is not parsed properly inside 'listagg':
+    // 'distinct' keyword is not parsed properly inside 'listagg': https://youtrack.jetbrains.com/issue/IDEA-341776
     @Query("""
             select new com.mytests.spring.springdatadistinct.MyDataDTO(
                 data.num1,
@@ -35,7 +35,7 @@ public interface MyDataRepository extends CrudRepository<MyData, Integer> {
             ) from MyData data group by data.num1, data.num2""")
     List<MyDataDTO> someQuery2();
 
-    // 'is distinct', 'is not distinct' are not parsed properly in 'where' clause:
+    // 'is distinct', 'is not distinct' are not parsed properly in 'where' clause: https://youtrack.jetbrains.com/issue/IDEA-304859
     @Query("select data from MyData data where data.num3 is distinct from :arg1 and data.num1 is not distinct from :arg2")
     List<MyData> someQuery3(@Param("arg1") int arg, @Param("arg2") int arg2);
 

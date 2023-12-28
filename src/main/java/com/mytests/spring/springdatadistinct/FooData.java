@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 
-// no syntax highlighting for 'insert into' here:
+// no syntax highlighting for 'insert into' here: https://youtrack.jetbrains.com/issue/IDEA-318718
 @Entity
 @NamedQuery(name = "myInsertQuery", query = "insert into FooData(id,str,number) select d.id, 'updated_' || d.firststr, :arg2 + d.num2 from MyData d where d.num2 = :arg1  ")
 public class FooData {

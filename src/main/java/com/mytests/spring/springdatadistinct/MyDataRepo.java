@@ -16,7 +16,7 @@ public class MyDataRepo {
 
     @Transactional
     public void populateData(){
-        // false-positive errors in these queries:
+        // false-positive errors in these queries: https://youtrack.jetbrains.com/issue/IDEA-341902
         String insertQ1 = "INSERT INTO MyData (id, firststr, secondstr, thirdstr, fourthstr, fifthstr, num1, num2, num3) VALUES (1, 'str11','str12','str13','str14','str15', 11,12,13)";
         String insertQ2 = "INSERT INTO MyData (id, firststr, secondstr, thirdstr, fourthstr, fifthstr, num1, num2, num3) VALUES (2, 'str21','str22','str23','str24','str25', 21,22,23)";
         String insertQ3 = "INSERT INTO MyData (id, firststr, secondstr, thirdstr, fourthstr, fifthstr, num1, num2, num3) VALUES (3, 'str31','str32','str33','str34','str35', 21,32,33)";
