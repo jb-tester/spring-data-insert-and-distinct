@@ -1,12 +1,10 @@
 package com.mytests.spring.springdatadistinct;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
+import jakarta.persistence.*;
 
 @Entity
 public class MyData {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String firststr;
     private String secondstr;

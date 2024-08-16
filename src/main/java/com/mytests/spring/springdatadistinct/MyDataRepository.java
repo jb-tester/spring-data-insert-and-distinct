@@ -15,7 +15,7 @@ public interface MyDataRepository extends CrudRepository<MyData, Integer> {
                 data.num1,
                 data.num2,
                 data.firststr,
-                listagg(distinct data.secondstr,'+') over(partition by data.num1)
+                listagg(distinct data.secondstr,'+') over (partition by data.num1)
             ) from MyData data""")
     List<MyDataDTO> someQuery0();
 

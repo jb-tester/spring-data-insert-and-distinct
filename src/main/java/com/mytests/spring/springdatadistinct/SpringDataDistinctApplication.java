@@ -9,10 +9,14 @@ public class SpringDataDistinctApplication implements CommandLineRunner {
 
     private final MyDataRepo repo;
     private final MyDataRepository myDataRepository;
+    private final FooDataRepo fooDataRepo;
+    private final FoDataRepositoryService foDataRepositoryService;
 
-    public SpringDataDistinctApplication(MyDataRepo repo, MyDataRepository myDataRepository) {
+    public SpringDataDistinctApplication(MyDataRepo repo, MyDataRepository myDataRepository, FooDataRepo fooDataRepo,  FoDataRepositoryService foDataRepositoryService) {
         this.repo = repo;
         this.myDataRepository = myDataRepository;
+        this.fooDataRepo = fooDataRepo;
+        this.foDataRepositoryService = foDataRepositoryService;
     }
 
     public static void main(String[] args) {
@@ -27,7 +31,7 @@ public class SpringDataDistinctApplication implements CommandLineRunner {
             System.out.println(myData);
         }
         System.out.println("*********************** use 'is distinct from' in 'where' clause: *****************************");
-        for (MyData myData : myDataRepository.someQuery3(33,21)) {
+        for (MyData myData : myDataRepository.someQuery3(33, 21)) {
             System.out.println(myData);
         }
         System.out.println("*********************** use 'distinct' in 'select' clause: ************************************");
@@ -45,7 +49,10 @@ public class SpringDataDistinctApplication implements CommandLineRunner {
         System.out.println("************************** use 'distinct' inside 'count' in query: ***************************");
         System.out.println(myDataRepository.someQuery1());
         System.out.println("***********************************************************************************************");
-        repo.useNamedInsertQuery(12, 100);
-
+        System.out.println("************************** use 'insert' in the named query: ***************************");
+        fooDataRepo.useNamedInsertQuery(12, 100);
+        System.out.println("************************** use 'insert' in @Query: ***************************");
+        foDataRepositoryService.insertData();
+        foDataRepositoryService.displayData();
     }
 }
