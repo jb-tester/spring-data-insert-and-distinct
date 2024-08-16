@@ -2,6 +2,7 @@
 
 * no syntax highlighting for 'insert into' in the named queries - https://youtrack.jetbrains.com/issue/IDEA-318718
 * incorrect parsing of 'insert... values' queries - https://youtrack.jetbrains.com/issue/IDEA-341902
+* incorrect parsing of 'insert... values' inside @Query - https://youtrack.jetbrains.com/issue/IDEA-357769
 
 # distinct keyword:
 
